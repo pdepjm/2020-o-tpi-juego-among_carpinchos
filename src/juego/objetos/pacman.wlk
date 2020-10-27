@@ -84,6 +84,8 @@ class Pacman{
 	method emitirVidas (mensaje) {
 		if(mostradorDeVidas != null) mostradorDeVidas.emitir(mensaje)
 	}
+
+	method toggleMortal () {mortal = !mortal}
 }
 
 object mrPacman inherits Pacman{

@@ -21,8 +21,8 @@ describe "Pacman"{
         assert.equals(3, mrPacman.vidas())
     }
     test "es comido - mortal"{
-        mrPacman.aparecer()
-		game.schedule(6000, { mrPacman.serEliminado() })
+        mrPacman.toggleMortal()
+		mrPacman.serEliminado()
         assert.equals(2, mrPacman.vidas())
     }
 }
