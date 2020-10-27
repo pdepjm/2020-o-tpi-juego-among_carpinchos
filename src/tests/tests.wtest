@@ -1,0 +1,28 @@
+import wollok.game.*
+import juego.grilla.*
+import juego.posicionadores.*
+import juego.actitudes.*
+import juego.objetos.fantasma.*
+import juego.objetos.fruta.*
+import juego.objetos.pacman.*
+import juego.objetos.portal.*
+import juego.objetos.estructura.*
+
+// pacman es comido y es mortal -> pierde una vida [serEliminado]
+// pacman es comido y no es mortal -> no pasa nada
+
+// pacman come fruta -> aumentan los puntos
+// pacman come fruta (aumentan corazones) -> corazones + 1
+// pacman come fruta (letalidad) y come fantasma -> aumentan los puntos
+
+describe "Pacman"{
+    test "no es comido - no mortal"{
+		mrPacman.serEliminado()
+        assert.equals(3, mrPacman.vidas())
+    }
+    test "es comido - mortal"{
+        mrPacman.aparecer()
+		game.schedule(6000, { mrPacman.serEliminado() })
+        assert.equals(2, mrPacman.vidas())
+    }
+}

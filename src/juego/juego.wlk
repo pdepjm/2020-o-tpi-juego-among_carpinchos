@@ -56,7 +56,7 @@ object mrMsPacMan {
 	method iniciar() {
 		generadorDeMuros.generar()
 		grillaDeJuego.generarGrillaDe(21,21)
-		self.personajesJugables([mrPacman])
+		self.personajesJugables([mrPacman, msPacman])
 		self.iniciarActitudes()
 		self.agregarPersonajes()
 		self.setearMovimientosPara(movibles, 500)

@@ -87,6 +87,11 @@ object generadorDeMuros{
 		self.downT(3,4,game.at(9,11))
 		self.downT(3,2,game.at(5,11))
 		self.downT(3,2,game.at(13,11))
+		/* Prision */
+		self.verticalWall(15,game.at(22,1))
+		self.verticalWall(15,game.at(24,1))
+		muros.add(new Wall(position = game.at(23,1)))
+		muros.add(new Wall(position = game.at(23,15)))
 	}
 	method generar(){ 
 		self.crearMapa()
