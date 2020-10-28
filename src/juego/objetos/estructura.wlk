@@ -1,4 +1,5 @@
 import wollok.game.*
+import juego.objetos.portal.Portal
 
 class Wall {
 	var position
@@ -93,7 +94,14 @@ object generadorDeMuros{
 		self.downT(3,4,game.at(9,11))
 		self.downT(3,2,game.at(5,11))
 		self.downT(3,2,game.at(13,11))
-		/* Prision */
+		
+		/* PORTALES */
+		const pA = new Portal(position = game.at(1,10))
+		const pB = new Portal(position = game.at(19,10))
+		pA.anexarCon(pB)
+		muros.addAll([pA,pB])
+		
+		/* PRISION */
 		self.prision(3,game.at(22,12))
 		self.prision(4,game.at(22,7))
 		self.prision(3,game.at(22,6))
