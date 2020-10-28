@@ -5,7 +5,7 @@ const posicionadorFruta = new Posicionador()
 
 class Fruta{
 	const posicionador = posicionadorFruta
-	var property position = game.at(0,0)
+	var property position = game.at(23,14)
 	
 	method image() = "frutas/" + self.nombre() + ".png"
 	method nombre()
@@ -20,7 +20,7 @@ class Fruta{
 	method serComidoPor(unPersonaje){
 		unPersonaje.sumarPuntos(self.puntos())
 		self.efectoPara(unPersonaje)
-		position = game.at(-1,-1)
+		position = game.at(23,14)
 		game.schedule(self.cooldown(), { posicionador.randomPosPara(self) })
 	}
 	method interactuarCon(unPersonaje){ self.serComidoPor(unPersonaje) }	

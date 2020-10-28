@@ -24,6 +24,12 @@ object generadorDeMuros{
 		self.horizontalWall(largo,inicio)
 		self.verticalWall(alto - 1 ,inicio.up(1).right((largo/2).truncate(0)))	
 	}
+	method prision(alto, inicio){
+		self.verticalWall(alto,inicio)
+		self.verticalWall(alto,inicio.right(2))
+		muros.add(new Wall(position = inicio.right(1)))
+		muros.add(new Wall(position = inicio.right(1).up(alto - 1)))
+	}
 	method crearMapa(){
 		/* PAREDES EXTERIORES */
 		self.verticalWall(21,game.at(0,0))
@@ -88,10 +94,9 @@ object generadorDeMuros{
 		self.downT(3,2,game.at(5,11))
 		self.downT(3,2,game.at(13,11))
 		/* Prision */
-		self.verticalWall(15,game.at(22,1))
-		self.verticalWall(15,game.at(24,1))
-		muros.add(new Wall(position = game.at(23,1)))
-		muros.add(new Wall(position = game.at(23,15)))
+		self.prision(3,game.at(22,13))
+		self.prision(4,game.at(22,8))
+		self.prision(3,game.at(22,4))
 	}
 	method generar(){ 
 		self.crearMapa()

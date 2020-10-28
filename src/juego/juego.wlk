@@ -44,10 +44,10 @@ object mrMsPacMan {
 			new Pizza()
 		])
 		movibles.addAll([
+			/*new Fantasma(), 
 			new Fantasma(), 
 			new Fantasma(), 
-			new Fantasma(), 
-			new Fantasma(),
+			new Fantasma(),*/
 			new Fantasma()
 		])
 		posicionables.addAll( movibles )
@@ -56,7 +56,7 @@ object mrMsPacMan {
 	method iniciar() {
 		generadorDeMuros.generar()
 		grillaDeJuego.generarGrillaDe(21,21)
-		self.personajesJugables([mrPacman, msPacman])
+		self.personajesJugables([mrPacman])
 		self.iniciarActitudes()
 		self.agregarPersonajes()
 		self.setearMovimientosPara(movibles, 500)
