@@ -35,7 +35,7 @@
 - ⚙️Menu de selección de cantidad de personajes y gestor de los marcos para el juego!(**HECHO - MEJORABLE**)
 - ![closed](assets/portales/closed.png) ![in](assets/portales/in.png) ![out](assets/portales/out.png) Portales (**HECHO**)
 - ![wall](assets/wall.png) Muros no traspasables
-- ![mrPacman](assets/pacman/mrPacman/normal-right.png) ![msPacman](assets/pacman/mrPacman/normal-right.png) Personajes:
+- ![mrPacman](assets/pacman/mrPacman/normal-right.png) ![msPacman](assets/pacman/msPacman/normal-right.png) Personajes:
     - ![healthbar](assets/healthbar/3-heart.png) Barra de salud para personajes (MAXIMO 5 VIDAS)
     - 👼 Personajes tienen 5s de inmunidad cada vez que spawnea en el mapa, para evitar las autodeath (**HECHO**)
 - ![ghost](assets/enemigo/red.png) Fantasmas (enemigos):
