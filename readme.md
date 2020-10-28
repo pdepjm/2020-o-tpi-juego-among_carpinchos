@@ -4,22 +4,21 @@
 
 ### 4/11/2020 📅
 
-- Terminar el juego
+- Terminar el juego (**jajaj**)
 - Tests:
-    - Come banana -> puntos aumentan
-    - Come banana y come enemigo -> puntos aumentan
-    - Intena comer enemigo pero muere -> pierde una vida
+    - Come banana -> puntos aumentan (**HECHO**)
+    - Come banana y come enemigo -> puntos aumentan (**HECHO**)
+    - Intena comer enemigo pero muere -> pierde una vida (**HECHO**)
 - Comportamiento:
-    - El fantasma persigue al pacman más cercano
-    - El fantasma comido persigue al pacman
+    - Los fantasmas se comportan de manera distinta (**HECHO**)
 - Muros:
-    - Generarlos de una mejor manera
-    - Evitar las colecciones
+    - Generarlos de una mejor manera (**HECHO - MEJORABLE**)
+    - Evitar las colecciones (**HECHO - MEJORABLE**)
 - Movimientos:
-    - Consultar si la proxima posición tiene un objeto atravesable
-- Más de 2 personajes (skins)
-- Más enemigos
-- Portales
+    - Consultar si la proxima posición tiene un objeto atravesable (**HECHO**)
+- Más de 2 personajes (skins) (**HECHO**)
+- Más enemigos (**HECHO**)
+- Portales (**HECHO**)
 
 ### 22/10/2020 📅
 
@@ -32,7 +31,7 @@
 ![Mapa](assets/mapa.jpg)
 
 ## Mecánicas 🤓
-- ⚙️Menu de selección de cantidad de personajes y gestos de los marcos para el juego!(**HECHO - MEJORABLE**)
+- ⚙️Menu de selección de cantidad de personajes y gestor de los marcos para el juego!(**HECHO - MEJORABLE**)
 - 🚪Portales (**HECHO**)
 - 👼Pacman tiene 5s de inmunidad cada vez que spawnea en el mapa, para evitar las autodeath (**HECHO**)
 - 👻Fantasmas (enemigos):
