@@ -16,6 +16,6 @@ class Portal {
 	method interactuarCon(unPersonaje){ self.teletransportarA(unPersonaje)}
 	method esTraspasable() = true
 	method dibujar() { position.drawElement(self) }
-	method aparecer(){}
+	method puedeSerComidoPor(unPerosnaje)= false
 	method teletransportarA(unPersonaje){ unPersonaje.position(salida.position()) }
 }

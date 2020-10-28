@@ -7,6 +7,7 @@ class Wall {
 	method esTraspasable() = false
 	method position() = position
 	method dibujar() { position.drawElement(self) }
+	method puedeSerComidoPor(unPersonaje) = false
 }
 
 object generadorDeMuros{

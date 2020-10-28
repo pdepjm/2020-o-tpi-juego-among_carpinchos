@@ -4,7 +4,8 @@ import juego.objetos.barraLateral.*
 
 class Pacman{
 	const posicionador = posicionadorPacman
-	var property position = game.at(23,4)
+	const carcel = game.at(23,4)
+	var property position = carcel
 	var property sentido = "up"
 	var estado = "normal"
 	var estaCerrado = false
@@ -46,16 +47,13 @@ class Pacman{
 	method vidas() = vidas
 	method puedeMatar() = estado.equals("furioso")
 	method posicionador() = position
-	method serComidoPor(unPersonaje) {
-		unPersonaje.sumarPuntos(50)
-		self.serEliminado()
-	}
+	method puedeSerComidoPor(unPersonaje) = false
 	method serEliminado(){
 		if (mortal){
 			vidas = (vidas - 1).max(0)
 			if(vidas.equals(0)) {
 				jugando = false
-				self.position(game.at(23,4))
+				position = carcel
 			}
 			else self.aparecer()
 			if(

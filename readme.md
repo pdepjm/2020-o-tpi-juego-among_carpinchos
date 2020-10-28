@@ -53,9 +53,11 @@
         - ![cherry](assets/frutas/cherry.png) Cerezas: letalidad (**HECHO**)
         - ![banana](assets/frutas/banana.png) Bananas: letalidad prolongada (**HECHO**)
         - ![heart](assets/frutas/heart.png) Corazones: aumentar vida (**HECHO**)
-        - ![pizza](assets/frutas/pizza.png) pizzas: aumentar vida y letalidad (**HECHO**)
+        - ![pizza](assets/frutas/pizza.png) Pizzas: aumentar vida y letalidad (**HECHO**)
+        - ![chilly](assets/frutas/chilly.png) Chillys: hacen aparecer una bola de fuego que envuelve al personaje (**HECHO**)
     - Comportamiento diferente: (**HECHO - MEJORABLE**)
         - ❄️Cada fruta tiene su propio cooldown para reaparecer (**HECHO**)
+        - ![fireball](assets/fireball.png)Bola de fuego: todo lo que alcance su radio, es autoamticamente ingerido por el personaje que la invocó
 ## Integrantes 😁
 - Da Ruos, Ailén
 - Escalante, Leandro

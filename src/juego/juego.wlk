@@ -13,6 +13,7 @@ object menu{
 	var imagen = 1
 	var property position = game.at(0,0)
 	method image() = "menu/" + imagen.toString() + "PlayerMenu.png"
+	method puedeSerComidoPor(unPersonaje) = false
 	method mostrar(){
 		game.addVisual(self)
 		keyboard.num1().onPressDo({ if (!enJuego) imagen = 1 })
@@ -62,7 +63,8 @@ object mrMsPacMan {
 			new Cherry(),
 			new Cherry(),
 			new Heart(),
-			new Pizza()
+			new Pizza(),
+			new Chilly()
 		])
 		posicionables.addAll( enemigos )
 		posicionables.addAll( personajes )

@@ -6,10 +6,11 @@ const actitudes = [timida, cazadora, tontita, stalker, exploradora]
 const nombres = ["lime", "red", "cyan", "pink", "yellow"]
 
 class Fantasma{
+	const carcel = game.at(23,8)
 	var nombre = nombres.anyOne()
 	var puntos = 0
 	var actitud = actitudes.anyOne()
-	var position = game.at(23,8)
+	var position = carcel
 	var lastPos = position
 	const posicionador = posicionadorFantasma
 	
@@ -34,7 +35,7 @@ class Fantasma{
 	method puedeSerComidoPor(unPersonaje) = unPersonaje.estado().equals("furioso")
 	method serComidoPor(unPersonaje) {
 		unPersonaje.sumarPuntos(puntos)
-		position = game.at(23,8)
+		position = carcel
 		nombre = nombres.anyOne()
 		actitud = actitudes.anyOne()
 		game.schedule(5000, { self.aparecer() })
