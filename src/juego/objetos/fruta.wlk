@@ -5,7 +5,7 @@ const posicionadorFruta = new Posicionador()
 
 class Fruta{
 	const posicionador = posicionadorFruta
-	var property position = game.at(23,14)
+	var property position = game.at(23,13)
 	
 	method image() = "frutas/" + self.nombre() + ".png"
 	method nombre()
@@ -13,17 +13,17 @@ class Fruta{
 	method puntos()
 	method iniciar(){
 		game.addVisual(self)
-		posicionador.randomPosPara(self)
 	}
 	method efectoPara(unPersonaje)
 	method esTraspasable() = true
 	method serComidoPor(unPersonaje){
 		unPersonaje.sumarPuntos(self.puntos())
 		self.efectoPara(unPersonaje)
-		position = game.at(23,14)
-		game.schedule(self.cooldown(), { posicionador.randomPosPara(self) })
+		position = game.at(23,13)
+		game.schedule(self.cooldown(), { self.aparecer() })
 	}
-	method interactuarCon(unPersonaje){ self.serComidoPor(unPersonaje) }	
+	method interactuarCon(unPersonaje){ self.serComidoPor(unPersonaje) }
+	method aparecer(){ posicionador.randomPosPara(self) }
 }
 
 class Banana inherits Fruta{

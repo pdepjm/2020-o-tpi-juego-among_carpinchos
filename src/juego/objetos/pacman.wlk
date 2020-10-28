@@ -4,7 +4,7 @@ import juego.objetos.barraLateral.*
 
 class Pacman{
 	const posicionador = posicionadorPacman
-	var property position = game.at(23,5)
+	var property position = game.at(23,4)
 	var property sentido = "up"
 	var estado = "normal"
 	var estaCerrado = false
@@ -12,7 +12,7 @@ class Pacman{
 	var gamepad
 	var vidas = 3
 	var puntos = 0
-	var iniciado = false
+	var property jugando = true
 	var mostradorDePuntos = null
 	
 	method image() = if (estaCerrado) self.imagenCerrado() else self.imagenEstado()
@@ -23,11 +23,9 @@ class Pacman{
 	method nombre()
 	method configGamepad()
 	method iniciar(){
-		iniciado = true
 		self.configGamepad()
 		gamepad.iniciar(self)
 		game.addVisual(self)
-		self.aparecer()
 		game.onCollideDo(self, { colisionado => colisionado.interactuarCon(self) })
 	}
 	method interactuarCon(unPersonaje){ game.say(self, "Hola bro") }
@@ -55,11 +53,11 @@ class Pacman{
 	method serEliminado(){
 		if (mortal){
 			vidas = (vidas - 1).max(0)
-			if(vidas.equals(0)) self.position(game.at(23,5))
+			if(vidas.equals(0)) self.position(game.at(23,4))
 			else self.aparecer()
 			if(
 				mrPacman.vidas() == 0 &&
-				(!msPacman.iniciado() || msPacman.vidas() == 0)
+				(!msPacman.jugando() || msPacman.vidas() == 0)
 			) game.stop()
 		}
 		else self.emitirMensaje("LA INMUNIDAD TEMPORAL ESTABA ACTIVADA")
@@ -73,7 +71,6 @@ class Pacman{
 		self.animar()
 		posicionador.nuevaPosPara(self)
 	}
-	method iniciado () = iniciado
 	
 	method emitirMensaje (mensaje) {
 		if(mostradorDePuntos != null) mostradorDePuntos.emitir(mensaje)
@@ -86,8 +83,8 @@ object mrPacman inherits Pacman{
 	// esta en override para agregar el mostrador de puntos y vidas en una posicon especial
 	override method iniciar(){
 		super()
-		mostradorDePuntos = new Puntos(position = game.at(22, 19), nombre=self.nombre())
-		const mostradorDeVidas = new Corazones(position = game.at(23, 19), jugador=self)
+		mostradorDePuntos = new Puntos(position = game.at(22, 18), nombre=self.nombre())
+		const mostradorDeVidas = new Corazones(position = game.at(23, 18), jugador=self)
 		game.addVisual(mostradorDePuntos)
 		game.addVisual(mostradorDeVidas)
 	}
@@ -102,8 +99,8 @@ object msPacman inherits Pacman{
 	
 	override method iniciar(){
 		super()
-		mostradorDePuntos = new Puntos(position = game.at(22, 17), nombre=self.nombre())
-		const mostradorDeVidas = new Corazones(position = game.at(23, 17), jugador=self)
+		mostradorDePuntos = new Puntos(position = game.at(22, 16), nombre=self.nombre())
+		const mostradorDeVidas = new Corazones(position = game.at(23, 16), jugador=self)
 		game.addVisual(mostradorDePuntos)
 		game.addVisual(mostradorDeVidas)
 	}

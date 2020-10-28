@@ -3,7 +3,7 @@ import wollok.game.*
 
 program MrMsPacMan {
 	game.title("Mr and Ms PacMan")
-	game.boardGround("bg.jpg")
+	game.boardGround("menu/bg.jpg")
 	game.width(26)
 	game.height(21)
 	game.cellSize(50)

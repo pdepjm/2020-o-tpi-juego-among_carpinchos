@@ -9,7 +9,7 @@ class Fantasma{
 	var nombre = nombres.anyOne()
 	var puntos = 0
 	var actitud = actitudes.anyOne()
-	var position = game.at(23,10)
+	var position = game.at(23,8)
 	var lastPos = position
 	const posicionador = posicionadorFantasma
 	
@@ -24,12 +24,9 @@ class Fantasma{
 	method lastPos() = lastPos
 	method iniciar(){ 
 		game.addVisual(self)
-		self.aparecer()
 	}
 	method setearPuntaje(){ puntos = 50 * (1 .. 4).anyOne() }
 	method aparecer(){
-		nombre = nombres.anyOne()
-		actitud = actitudes.anyOne()
 		self.setearPuntaje()
 		posicionador.randomPosPara(self)
 	}
@@ -37,7 +34,9 @@ class Fantasma{
 	method puedeSerComidoPor(unPersonaje) = unPersonaje.estado().equals("furioso")
 	method serComidoPor(unPersonaje) {
 		unPersonaje.sumarPuntos(puntos)
-		position = game.at(23,10)
+		position = game.at(23,8)
+		nombre = nombres.anyOne()
+		actitud = actitudes.anyOne()
 		game.schedule(5000, { self.aparecer() })
 	}
 	method interactuarCon(unPersonaje){

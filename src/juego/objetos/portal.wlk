@@ -15,8 +15,7 @@ class Portal {
 	}
 	method interactuarCon(unPersonaje){ self.teletransportarA(unPersonaje)}
 	method esTraspasable() = true
-	method iniciar(){ 
-		game.addVisual(self)
-	}
+	method iniciar(){ game.addVisual(self) }
+	method aparecer(){}
 	method teletransportarA(unPersonaje){ unPersonaje.position(salida.position()) }
 }

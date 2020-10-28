@@ -32,6 +32,7 @@
 ![Mapa](assets/mapa.jpg)
 
 ## Mecánicas 🤓
+- ⚙️Menu de selección de cantidad de personajes y gestos de los marcos para el juego!(**HECHO - MEJORABLE**)
 - 🚪Portales (**HECHO**)
 - 👼Pacman tiene 5s de inmunidad cada vez que spawnea en el mapa, para evitar las autodeath (**HECHO**)
 - 👻Fantasmas (enemigos):
@@ -39,9 +40,9 @@
     - 👣Tipos de movimiento:
         - ❓Explorador: Aleatorio evitando los muros y la posicion anterior (**HECHO**)
         - 👿Cazador: Buscar al jugador mas cercano (**HECHO**)
-        - 🕵️Stalker: busca a un jugador fijo, de éste perder, busca a otro (**HECHO**)
-        - 🙈Tímido: siempre busca al personaje más lejano, de haber solo uno, pierde la timidez, comportándose como cazador (**HECHO**)
-        - 🤔Tonto: de haber mas de un jugador, no puede decidirse a cual seguir, cuando hay un solo jugador, sus neuronas hacen un poco se sinapsis (**HECHO**)
+        - 🕵️Stalker: Busca a un jugador fijo, de éste perder, busca a otro (**HECHO**)
+        - 🙈Tímido: siempre busca alejarse de todos los personajes (**HECHO**)
+        - 🤔Tonto: Nunca puede decidirse a quien seguir(**HECHO**)
     - ☠️Al morir reaparecen con otro nombre, actitud y aporta diferente puntaje (**HECHO**)
     - 🎭Cada actitud tiene su imagen identificativa (**HECHO**)
 - 🍽️Alimentos (powerups y puntos):

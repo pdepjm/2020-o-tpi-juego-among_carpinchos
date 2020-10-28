@@ -8,11 +8,35 @@ import juego.objetos.pacman.*
 import juego.objetos.portal.*
 import juego.objetos.estructura.*
  
+object menu{
+	var enJuego = false
+	var imagen = 1
+	var property position = game.at(0,0)
+	method image() = "menu/" + imagen.toString() + "PlayerMenu.png"
+	method mostrar(){
+		game.addVisual(self)
+		keyboard.num1().onPressDo({ if (!enJuego) imagen = 1 })
+		keyboard.num2().onPressDo({ if (!enJuego) imagen = 2 })
+		keyboard.enter().onPressDo({
+			if (!enJuego){
+				enJuego = true
+				if (imagen.equals(1)){
+					mrMsPacMan.posicionables().remove(msPacman)
+					msPacman.jugando(false)
+					imagen = 4
+				}else imagen = 3
+				mrMsPacMan.jugar()
+			}
+		})
+	}
+}
+
 object mrMsPacMan {
-	const personajes = []
-	const movibles = []
+	const personajes = [mrPacman,msPacman]
+	const movibles = personajes
 	const posicionables = []
 	
+	method posicionables() = posicionables
 	method iniciarActitudes(){
 		timida.setearDisponibles(personajes)
 		cazadora.setearDisponibles(personajes)
@@ -24,14 +48,14 @@ object mrMsPacMan {
 			unaListaDePersonajes.forEach({unPersonaje => unPersonaje.mover()})
 		})
 	}
-	method personajesJugables(unosPersonajes) { 
-		personajes.addAll(unosPersonajes)
-		movibles.addAll(unosPersonajes)
+	method agregarEnemigos(unaCantidad){
+		(1 .. unaCantidad).forEach({ n => movibles.add(new Fantasma())})
 	}
 	method agregarPersonajes() {
 		const portalA = new Portal(position = game.at(1,10))
 		const portalB = new Portal(position = game.at(19,10))
 		portalA.anexarCon(portalB)
+		self.agregarEnemigos(1)
 		posicionables.addAll([
 			portalA,
 			portalB,
@@ -43,23 +67,19 @@ object mrMsPacMan {
 			new Heart(),
 			new Pizza()
 		])
-		movibles.addAll([
-			/*new Fantasma(), 
-			new Fantasma(), 
-			new Fantasma(), 
-			new Fantasma(),*/
-			new Fantasma()
-		])
 		posicionables.addAll( movibles )
 		posicionables.forEach({unPosicionable => unPosicionable.iniciar() })
 	}
 	method iniciar() {
 		generadorDeMuros.generar()
 		grillaDeJuego.generarGrillaDe(21,21)
-		self.personajesJugables([mrPacman])
 		self.iniciarActitudes()
 		self.agregarPersonajes()
 		self.setearMovimientosPara(movibles, 500)
+		menu.mostrar()
 		game.start()
+	}
+	method jugar(){
+		posicionables.forEach({unPosicionable => unPosicionable.aparecer()})
 	}
 }
