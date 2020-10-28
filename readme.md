@@ -31,39 +31,29 @@
 ![Mapa](assets/mapa.jpg)
 
 ## Mecánicas 🤓
--   ![menu](assets/menu/1PlayerMenu.png) 
+![menu](assets/menu/1PlayerMenu.png) 
 - ⚙️Menu de selección de cantidad de personajes y gestor de los marcos para el juego!(**HECHO - MEJORABLE**)
-- ![closed](assets/portales/closed.png) ![in](assets/portales/closed.png) ![out](assets/enemigo/cyan.png)
-- 🚪Portales (**HECHO**)
-- ![closed](assets/wall.png)
-- Muros no traspasables
-- 👼Pacman tiene 5s de inmunidad cada vez que spawnea en el mapa, para evitar las autodeath (**HECHO**)
-- ![ghost](assets/enemigo/red.png)
-- 👻Fantasmas (enemigos):
+- ![closed](assets/portales/closed.png) ![in](assets/portales/in.png) ![out](assets/enemigo/out.png) Portales (**HECHO**)
+- ![closed](assets/wall.png) Muros no traspasables
+- Personajes:
+    -![healthbar](assets/healthbar/3-heart.png) Barra de salud para personajes (MAXIMO 5 VIDAS)
+    -👼 Personajes tienen 5s de inmunidad cada vez que spawnea en el mapa, para evitar las autodeath (**HECHO**)
+- ![ghost](assets/enemigo/red.png) Fantasmas (enemigos):
     - Modelar con clases e instanciar (**HECHO - MEJORABLE**)
     - 👣Tipos de movimiento:
-        - ![explorer](assets/enemigo/red/explorador.png) 
-        - ❓Explorador: Aleatorio evitando los muros y la posicion anterior (**HECHO**)
-        - ![hunter](assets/enemigo/red/hunter.png) 
-        - 👿Cazador: Buscar al jugador mas cercano (**HECHO**)
-        - ![stalker](assets/enemigo/red/stalker.png) 
-        - 🕵️Stalker: Busca a un jugador fijo, de éste perder, busca a otro (**HECHO**)
-        - ![shy](assets/enemigo/red/shy.png) 
-        - 🙈Tímido: siempre busca alejarse de todos los personajes (**HECHO**)
-        - ![dumb](assets/enemigo/red/dumb.png) 
-        - 🤔Tonto: Nunca puede decidirse a quien seguir(**HECHO**)
+        - ![explorer](assets/enemigo/pink/explorador.png) Explorador: Aleatorio evitando los muros y la posicion anterior (**HECHO**)
+        - ![hunter](assets/enemigo/red/hunter.png) Cazador: Buscar al jugador mas cercano (**HECHO**)
+        - ![stalker](assets/enemigo/yellow/stalker.png) Stalker: Busca a un jugador fijo, de éste perder, busca a otro (**HECHO**)
+        - ![shy](assets/enemigo/cyan/shy.png) Tímido: siempre busca alejarse de todos los personajes (**HECHO**)
+        - ![dumb](assets/enemigo/lime/dumb.png) Tonto: Nunca puede decidirse a quien seguir(**HECHO**)
     - ☠️Al morir reaparecen con otro nombre, actitud y aporta diferente puntaje (**HECHO**)
 - 🍽️Alimentos (powerups y puntos):
     - Modeladas con clases (que heredan de otra clase principal (**HECHO -  MEJORABLE**)
     - Otorgan puntos y/o algún poder: (**HECHO - MEJORABLE**)
-        - ![cherries](assets/frutas/cherry.png) 
-        - Cerezas: letalidad (**HECHO**)
-        - ![cherries](assets/frutas/banana.png) 
-        - Bananas: letalidad prolongada (**HECHO**)
-        - ![cherries](assets/frutas/heart.png) 
-        - Corazones: aumentar vida (**HECHO**)
-        - ![cherries](assets/frutas/pizza.png) 
-        - pizzas: aumentar vida y letalidad (**HECHO**)
+        - ![cherry](assets/frutas/cherry.png) Cerezas: letalidad (**HECHO**)
+        - ![banana](assets/frutas/banana.png) Bananas: letalidad prolongada (**HECHO**)
+        - ![heart](assets/frutas/heart.png) Corazones: aumentar vida (**HECHO**)
+        - ![pizza](assets/frutas/pizza.png) pizzas: aumentar vida y letalidad (**HECHO**)
     - Comportamiento diferente: (**HECHO - MEJORABLE**)
         - ❄️Cada fruta tiene su propio cooldown para reaparecer (**HECHO**)
 ## Integrantes 😁
