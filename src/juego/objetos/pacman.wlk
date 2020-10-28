@@ -49,6 +49,7 @@ class Pacman{
 	method posicionador() = position
 	method puedeSerComidoPor(unPersonaje) = false
 	method serEliminado(){
+		game.sound("sounds/gameOver.wav").play()
 		if (mortal){
 			vidas = (vidas - 1).max(0)
 			if(vidas.equals(0)) {
@@ -59,7 +60,7 @@ class Pacman{
 			if(
 				mrPacman.vidas() == 0 &&
 				(!msPacman.jugando() || msPacman.vidas() == 0)
-			) game.stop()
+			) game.stop() 
 		}
 		else self.emitirMensaje("LA INMUNIDAD TEMPORAL ESTABA ACTIVADA")
 	}

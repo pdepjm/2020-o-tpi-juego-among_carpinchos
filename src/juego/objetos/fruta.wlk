@@ -19,6 +19,7 @@ class Fruta{
 	method efectoPara(unPersonaje)
 	method esTraspasable() = true
 	method serComidoPor(unPersonaje){
+		game.sound("sounds/comer.mp3").play()
 		unPersonaje.sumarPuntos(self.puntos())
 		position = carcel
 		self.efectoPara(unPersonaje)
