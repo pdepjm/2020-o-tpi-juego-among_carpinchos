@@ -53,7 +53,10 @@ class Pacman{
 	method serEliminado(){
 		if (mortal){
 			vidas = (vidas - 1).max(0)
-			if(vidas.equals(0)) self.position(game.at(23,4))
+			if(vidas.equals(0)) {
+				jugando = false
+				self.position(game.at(23,4))
+			}
 			else self.aparecer()
 			if(
 				mrPacman.vidas() == 0 &&
@@ -72,9 +75,7 @@ class Pacman{
 		posicionador.nuevaPosPara(self)
 	}
 	
-	method emitirMensaje (mensaje) {
-		if(mostradorDePuntos != null) mostradorDePuntos.emitir(mensaje)
-	}
+	method emitirMensaje (mensaje) { mostradorDePuntos.emitir(mensaje) }
 
 	method toggleMortal () {mortal = !mortal}
 }

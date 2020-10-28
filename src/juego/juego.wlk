@@ -33,7 +33,7 @@ object menu{
 
 object mrMsPacMan {
 	const personajes = [mrPacman,msPacman]
-	const movibles = personajes
+	const enemigos = []
 	const posicionables = []
 	
 	method posicionables() = posicionables
@@ -49,16 +49,13 @@ object mrMsPacMan {
 		})
 	}
 	method agregarEnemigos(unaCantidad){
-		(1 .. unaCantidad).forEach({ n => movibles.add(new Fantasma())})
+		(1 .. unaCantidad).forEach({ n => enemigos.add(new Fantasma())})
 	}
 	method agregarPersonajes() {
-		const portalA = new Portal(position = game.at(1,10))
-		const portalB = new Portal(position = game.at(19,10))
-		portalA.anexarCon(portalB)
 		self.agregarEnemigos(1)
+		self.setearMovimientosPara(personajes, 500)
+		self.setearMovimientosPara(enemigos, 501)
 		posicionables.addAll([
-			portalA,
-			portalB,
 			new Banana(),
 			new Banana(),
 			new Banana(),
@@ -67,7 +64,8 @@ object mrMsPacMan {
 			new Heart(),
 			new Pizza()
 		])
-		posicionables.addAll( movibles )
+		posicionables.addAll( enemigos )
+		posicionables.addAll( personajes )
 		posicionables.forEach({unPosicionable => unPosicionable.iniciar() })
 	}
 	method iniciar() {
@@ -75,7 +73,6 @@ object mrMsPacMan {
 		grillaDeJuego.generarGrillaDe(21,21)
 		self.iniciarActitudes()
 		self.agregarPersonajes()
-		self.setearMovimientosPara(movibles, 500)
 		menu.mostrar()
 		game.start()
 	}
