@@ -57,7 +57,7 @@
         - ![heart](assets/frutas/heart.png) Corazones: aumentar vida (**HECHO**)
         - ![pizza](assets/frutas/pizza.png) Pizzas: aumentar vida y letalidad (**HECHO**)
         - ![chilly](assets/frutas/chilly.png) Chillys: hacen aparecer una bola de fuego que envuelve al personaje (**HECHO**)
-            - ![fireball](assets/fireball.png)Bola de fuego: todo lo que alcance su radio, es autoamticamente ingerido por el personaje que la invocó
+            - ![fireball](assets/mini-fireball.png)Bola de fuego: todo lo que alcance su radio, es autoamticamente ingerido por el personaje que la invocó
 ## Integrantes 😁
 - Da Ruos, Ailén
 - Escalante, Leandro
