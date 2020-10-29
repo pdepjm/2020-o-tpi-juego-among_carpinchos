@@ -13,8 +13,8 @@ class Wall {
 
 object generadorDeMuros{
 	const muros = []
-	method verticalWall(cantidad,inicio){ (0 .. cantidad - 1).forEach { n => muros.add(new Wall(position = game.at(inicio.x(),  n + inicio.y()))) } }
-	method horizontalWall(cantidad,inicio){ (0 .. cantidad - 1).forEach { n => muros.add(new Wall(position = game.at( n + inicio.x(), inicio.y()))) } }
+	method verticalWall(cantidad,inicio){ (0 .. cantidad - 1).forEach { n => muros.add(new Wall(position = inicio.up(n))) } }
+	method horizontalWall(cantidad,inicio){ (0 .. cantidad - 1).forEach { n => muros.add(new Wall(position = inicio.right(n))) } }
 	method cube(inicio){
 		self.verticalWall(2,inicio)
 		self.verticalWall(2,inicio.right(1))

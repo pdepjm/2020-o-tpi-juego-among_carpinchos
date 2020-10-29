@@ -55,8 +55,8 @@ class Pacman{
 	method posicionador() = position
 	method puedeSerComidoPor(unPersonaje) = false
 	method serEliminado(){
-		game.sound("sounds/gameOver.wav").play()
 		if (mortal){
+			game.sound("sounds/gameOver.wav").play()
 			vidas = (vidas - 1).max(0)
 			if(vidas.equals(0)) {
 				position = carcel
