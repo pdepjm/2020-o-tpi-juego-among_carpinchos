@@ -50,6 +50,7 @@
 - 🍽️Alimentos (powerups y puntos):
     - Modeladas con clases (que heredan de otra clase principal (**HECHO -  MEJORABLE**)
     - Otorgan puntos y/o algún poder: (**HECHO - MEJORABLE**)
+        - ![coin](assets/frutas/coin.png) Monedas: Sin efecto (**HECHO**)
         - ![cherry](assets/frutas/cherry.png) Cerezas: letalidad (**HECHO**)
         - ![banana](assets/frutas/banana.png) Bananas: letalidad prolongada (**HECHO**)
         - ![heart](assets/frutas/heart.png) Corazones: aumentar vida (**HECHO**)
