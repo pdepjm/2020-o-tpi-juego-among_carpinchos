@@ -22,6 +22,7 @@ class Pacman{
 	method encarcelar() { 
 		position = carcel
 		vidas = 3
+		puntos = 0
 	}
 	method esUtilizable() = false
 	method esTraspasable() = true
