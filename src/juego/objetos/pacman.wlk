@@ -7,13 +7,13 @@ class Pacman{
 	const carcel = game.at(23,4)
 	var property position = carcel
 	var property sentido = "up"
+	var property jugando = true
 	var estado = "normal"
 	var estaCerrado = false
 	var mortal = false
 	var gamepad
 	var vidas = 3
 	var puntos = 0
-	var property jugando = true
 	var mostradorDePuntos = null
 	
 	method image() = if (estaCerrado) self.imagenCerrado() else self.imagenEstado()
@@ -76,9 +76,7 @@ class Pacman{
 		self.animar()
 		posicionador.nuevaPosPara(self)
 	}
-	
 	method emitirMensaje (mensaje) { mostradorDePuntos.emitir(mensaje) }
-
 	method toggleMortal () {mortal = !mortal}
 }
 
@@ -91,7 +89,6 @@ object mrPacman inherits Pacman{
 		game.addVisual(mostradorDePuntos)
 		game.addVisual(mostradorDeVidas)
 	}
-	
 	override method nombre() = "mrPacman"
 	override method configGamepad(){
 		gamepad = new Gamepad(arriba = keyboard.w(), abajo = keyboard.s(), derecha = keyboard.d(), izquierda = keyboard.a())
@@ -107,7 +104,6 @@ object msPacman inherits Pacman{
 		game.addVisual(mostradorDePuntos)
 		game.addVisual(mostradorDeVidas)
 	}
-	
 	override method nombre() = "msPacman"
 	override method configGamepad(){
 		gamepad = new Gamepad(arriba = keyboard.up(), abajo = keyboard.down(), derecha = keyboard.right(), izquierda = keyboard.left())

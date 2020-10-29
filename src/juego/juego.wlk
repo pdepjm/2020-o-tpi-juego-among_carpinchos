@@ -63,12 +63,14 @@ object mrMsPacMan {
 		})
 	}
 	method agregarEnemigos(unaCantidad){ (1 .. unaCantidad).forEach({ n => enemigos.add(new Fantasma())})}
+	method agregarMonedas(unaCantidad){ (1 .. unaCantidad).forEach({ n => posicionables.add(new Coin())})}
 	method agregarBananas(unaCantidad){ (1 .. unaCantidad).forEach({ n => posicionables.add(new Banana())})}
 	method agregarCherrys(unaCantidad){ (1 .. unaCantidad).forEach({ n => posicionables.add(new Cherry())})}
 	method agregarPizzas(unaCantidad){ (1 .. unaCantidad).forEach({ n => posicionables.add(new Pizza())})}
 	method agregarCorazones(unaCantidad){ (1 .. unaCantidad).forEach({ n => posicionables.add(new Heart())})}
 	method agregarChillys(unaCantidad){ (1 .. unaCantidad).forEach({ n => posicionables.add(new Chilly())})}
 	method agregarFrutas(){
+		self.agregarMonedas(30)
 		self.agregarCherrys(3)
 		self.agregarBananas(2)
 		self.agregarCorazones(1)

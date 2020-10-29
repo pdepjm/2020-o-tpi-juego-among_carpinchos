@@ -33,6 +33,13 @@ class Fruta{
 	method aparecer(){ posicionador.randomPosPara(self) }
 }
 
+class Coin inherits Fruta{
+	override method cooldown() = 5000
+	override method puntos() = 25
+	override method nombre() = "coin"
+	override method efectoPara(unPersonaje){}
+}
+
 class Banana inherits Fruta{
 	override method cooldown() = 25000
 	override method puntos() = 50
