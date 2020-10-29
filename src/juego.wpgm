@@ -1,5 +1,5 @@
-import juego.juego.*
 import wollok.game.*
+import juego.mrMsPacMan.mrMsPacMan
 
 program MrMsPacMan {
 	game.title("Mr and Ms PacMan")

@@ -6,49 +6,49 @@ import juego.objetos.fantasma.*
 import juego.objetos.fruta.*
 import juego.objetos.pacman.*
 import juego.objetos.portal.*
-import juego.objetos.estructura.*
+import juego.estructura.*
 
 // pacman es comido y es mortal -> pierde una vida [serEliminado]
 // pacman es comido y no es mortal -> no pasa nada
-
 // pacman come fruta -> aumentan los puntos
 // pacman come fruta (aumentan corazones) -> corazones + 1
 // pacman come fruta (letalidad) y come fantasma -> aumentan los puntos
+describe "Pacman" {
 
-describe "Pacman"{
-	
 	fixture {
 		game.clear()
 	}
-	
-    test "no es comido - no mortal"{
+
+	test "no es comido - no mortal" {
 		mrPacman.serEliminado()
-        assert.equals(3, mrPacman.vidas())
-    }
-    test "es comido - mortal"{
-        mrPacman.toggleMortal()
+		assert.equals(3, mrPacman.vidas())
+	}
+
+	test "es comido - mortal" {
+		mrPacman.toggleMortal()
 		mrPacman.serEliminado()
-        assert.equals(2, mrPacman.vidas())
-    }
-    
-    test "Comer fruta aumenta puntos"{
-    	const banana = new Banana ()
-    	banana.serComidoPor(mrPacman)
-    	assert.equals(50, mrPacman.puntos())
-    }
-    
-    test "Aumenta vidas"{
-    	const corazon = new Heart ()
-    	corazon.serComidoPor(mrPacman)
-    	assert.equals(4, mrPacman.vidas())
-    }
-    
-    test "Puede comer fantasmas"{
-    	const cereza = new Cherry()
-    	const fantasma = new Fantasma ()
-    	cereza.serComidoPor(mrPacman)
-    	fantasma.serComidoPor(mrPacman)
-    	assert.equals(game.at(-1, -1), fantasma.position())
-    	
-    }
+		assert.equals(2, mrPacman.vidas())
+	}
+
+	test "Comer fruta aumenta puntos" {
+		const banana = new Banana()
+		banana.serComidoPor(mrPacman)
+		assert.equals(50, mrPacman.puntos())
+	}
+
+	test "Aumenta vidas" {
+		const corazon = new Heart()
+		corazon.serComidoPor(mrPacman)
+		assert.equals(4, mrPacman.vidas())
+	}
+
+	test "Puede comer fantasmas" {
+		const cereza = new Cherry()
+		const fantasma = new Fantasma()
+		cereza.serComidoPor(mrPacman)
+		fantasma.serComidoPor(mrPacman)
+		assert.equals(game.at(-1, -1), fantasma.position())
+	}
+
 }
+

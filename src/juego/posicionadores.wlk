@@ -1,7 +1,5 @@
 import wollok.game.*
 import juego.grilla.*
-import juego.objetos.pacman.mrPacman
-
 
 
 class Posicionador{
