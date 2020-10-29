@@ -49,6 +49,7 @@
     - ☠️Al morir reaparecen con otro nombre, actitud y aporta diferente puntaje (**HECHO**)
 - 🍽️Alimentos (powerups y puntos):
     - Modeladas con clases (que heredan de otra clase principal (**HECHO -  MEJORABLE**)
+    - ❄️Cada fruta tiene su propio cooldown para reaparecer (**HECHO**)
     - Otorgan puntos y/o algún poder: (**HECHO - MEJORABLE**)
         - ![coin](assets/frutas/coin.png) Monedas: Sin efecto (**HECHO**)
         - ![cherry](assets/frutas/cherry.png) Cerezas: letalidad (**HECHO**)
@@ -56,9 +57,7 @@
         - ![heart](assets/frutas/heart.png) Corazones: aumentar vida (**HECHO**)
         - ![pizza](assets/frutas/pizza.png) Pizzas: aumentar vida y letalidad (**HECHO**)
         - ![chilly](assets/frutas/chilly.png) Chillys: hacen aparecer una bola de fuego que envuelve al personaje (**HECHO**)
-    - Comportamiento diferente: (**HECHO - MEJORABLE**)
-        - ❄️Cada fruta tiene su propio cooldown para reaparecer (**HECHO**)
-        - ![fireball](assets/fireball.png)Bola de fuego: todo lo que alcance su radio, es autoamticamente ingerido por el personaje que la invocó
+            - ![fireball](assets/fireball.png)Bola de fuego: todo lo que alcance su radio, es autoamticamente ingerido por el personaje que la invocó
 ## Integrantes 😁
 - Da Ruos, Ailén
 - Escalante, Leandro
