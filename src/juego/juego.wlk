@@ -15,6 +15,7 @@ object menu{
 	method puedeSerComidoPor(unPersonaje) = false
 	method mostrar(){
 		game.addVisual(self)
+		keyboard.del().onPressDo({ game.stop() })
 		keyboard.num1().onPressDo({ 
 			if (!enJuego) {
 				imagen = 1
