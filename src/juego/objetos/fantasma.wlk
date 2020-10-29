@@ -39,6 +39,7 @@ class Fantasma{
 	method objetivo() = actitud.objetivoDe(self)
 	method puedeSerComidoPor(unPersonaje) = unPersonaje.estado().equals("furioso")
 	method serComidoPor(unPersonaje) {
+		game.sound("sounds/comer.mp3").play()
 		unPersonaje.sumarPuntos(puntos)
 		position = carcel
 		nombre = nombres.anyOne()

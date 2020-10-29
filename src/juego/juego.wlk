@@ -62,23 +62,24 @@ object mrMsPacMan {
 			else unaListaDePersonajes.forEach({unPersonaje => unPersonaje.mover()})
 		})
 	}
-	method agregarEnemigos(unaCantidad){
-		(1 .. unaCantidad).forEach({ n => enemigos.add(new Fantasma())})
+	method agregarEnemigos(unaCantidad){ (1 .. unaCantidad).forEach({ n => enemigos.add(new Fantasma())})}
+	method agregarBananas(unaCantidad){ (1 .. unaCantidad).forEach({ n => posicionables.add(new Banana())})}
+	method agregarCherrys(unaCantidad){ (1 .. unaCantidad).forEach({ n => posicionables.add(new Cherry())})}
+	method agregarPizzas(unaCantidad){ (1 .. unaCantidad).forEach({ n => posicionables.add(new Pizza())})}
+	method agregarCorazones(unaCantidad){ (1 .. unaCantidad).forEach({ n => posicionables.add(new Heart())})}
+	method agregarChillys(unaCantidad){ (1 .. unaCantidad).forEach({ n => posicionables.add(new Chilly())})}
+	method agregarFrutas(){
+		self.agregarCherrys(3)
+		self.agregarBananas(2)
+		self.agregarCorazones(1)
+		self.agregarPizzas(1)
+		self.agregarChillys(1)
 	}
-	method agregarPersonajes() {
+	method inicializarPosicionables() {
 		self.agregarEnemigos(1)
 		self.setearMovimientosPara(personajes, 500)
 		self.setearMovimientosPara(enemigos, 501)
-		posicionables.addAll([
-			new Banana(),
-			new Banana(),
-			new Banana(),
-			new Cherry(),
-			new Cherry(),
-			new Heart(),
-			new Pizza(),
-			new Chilly()
-		])
+		self.agregarFrutas()
 		posicionables.addAll( enemigos )
 		posicionables.addAll( personajes )
 		posicionables.forEach({unPosicionable => unPosicionable.iniciar() })
@@ -87,13 +88,11 @@ object mrMsPacMan {
 		generadorDeMuros.generar()
 		grillaDeJuego.generarGrillaDe(21,21)
 		self.iniciarActitudes()
-		self.agregarPersonajes()
+		self.inicializarPosicionables()
 		menu.mostrar()
 		game.start()
 	}
-	method jugar(){
-		posicionables.forEach({unPosicionable => unPosicionable.aparecer()})
-	}
+	method jugar(){ posicionables.forEach({unPosicionable => unPosicionable.aparecer()}) }
 	method reiniciar(){
 		posicionables.forEach({unPosicionable => unPosicionable.encarcelar()})
 		menu.reiniciar()
