@@ -5,7 +5,6 @@ import juego.actitudes.*
 import juego.objetos.fantasma.*
 import juego.objetos.fruta.*
 import juego.objetos.pacman.*
-import juego.objetos.portal.*
 import juego.objetos.estructura.*
  
 object menu{
@@ -16,19 +15,31 @@ object menu{
 	method puedeSerComidoPor(unPersonaje) = false
 	method mostrar(){
 		game.addVisual(self)
-		keyboard.num1().onPressDo({ if (!enJuego) imagen = 1 })
-		keyboard.num2().onPressDo({ if (!enJuego) imagen = 2 })
+		keyboard.num1().onPressDo({ 
+			if (!enJuego) {
+				imagen = 1
+				msPacman.jugando(false)
+			}
+		})
+		keyboard.num2().onPressDo({ 
+			if (!enJuego) {
+				imagen = 2
+				msPacman.jugando(true)
+			}
+		})
 		keyboard.enter().onPressDo({
 			if (!enJuego){
 				enJuego = true
 				if (imagen.equals(1)){
-					mrMsPacMan.posicionables().remove(msPacman)
-					msPacman.jugando(false)
 					imagen = 4
 				}else imagen = 3
 				mrMsPacMan.jugar()
 			}
 		})
+	}
+	method reiniciar(){
+		enJuego = false
+		imagen = 1
 	}
 }
 
@@ -46,7 +57,9 @@ object mrMsPacMan {
 	}
 	method setearMovimientosPara(unaListaDePersonajes, unaFrecuencia){
 		game.onTick(unaFrecuencia, "Movimientos", { 
-			unaListaDePersonajes.forEach({unPersonaje => unPersonaje.mover()})
+			if (unaListaDePersonajes.all({ unPersonaje => !unPersonaje.jugando() || !unPersonaje.tieneVidas() }))
+				self.reiniciar()
+			else unaListaDePersonajes.forEach({unPersonaje => unPersonaje.mover()})
 		})
 	}
 	method agregarEnemigos(unaCantidad){
@@ -80,5 +93,9 @@ object mrMsPacMan {
 	}
 	method jugar(){
 		posicionables.forEach({unPosicionable => unPosicionable.aparecer()})
+	}
+	method reiniciar(){
+		posicionables.forEach({unPosicionable => unPosicionable.encarcelar()})
+		menu.reiniciar()
 	}
 }
