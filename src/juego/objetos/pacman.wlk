@@ -19,7 +19,13 @@ class Pacman{
 	method image() = if (estaCerrado) self.imagenCerrado() else self.imagenEstado()
 	method imagenEstado() = "pacman/" + self.nombre() + "/" + estado + "-" + self.sentido() + ".png"
 	method imagenCerrado() = "pacman/" + estado +"-closed.png"
+	method encarcelar() { 
+		position = carcel
+		vidas = 3
+	}
+	method esUtilizable() = false
 	method esTraspasable() = true
+	method tieneVidas() = vidas > 0
 	method puntos() = puntos
 	method nombre()
 	method configGamepad()
@@ -53,21 +59,18 @@ class Pacman{
 		if (mortal){
 			vidas = (vidas - 1).max(0)
 			if(vidas.equals(0)) {
-				jugando = false
 				position = carcel
 			}
 			else self.aparecer()
-			if(
-				mrPacman.vidas() == 0 &&
-				(!msPacman.jugando() || msPacman.vidas() == 0)
-			) game.stop() 
 		}
 		else self.emitirMensaje("LA INMUNIDAD TEMPORAL ESTABA ACTIVADA")
 	}
 	method aparecer(){
-		mortal = false
-		posicionador.randomPosPara(self)
-		game.schedule(5000, { mortal = true })
+		if(jugando){
+			mortal = false
+			posicionador.randomPosPara(self)
+			game.schedule(5000, { mortal = true })
+		}
 	}
 	method mover(){ 
 		self.animar()

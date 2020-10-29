@@ -15,7 +15,11 @@ class Fantasma{
 	const posicionador = posicionadorFantasma
 	
 	method image() = "enemigo/" + nombre + "/" + actitud.image()
+	method encarcelar() { position = carcel }
+	method esUtilizable() = false
 	method esTraspasable() = true
+	method jugando() = true
+	method tieneVidas() = true
 	method puntos() = puntos
 	method position() = position
 	method position(unaPos) {
@@ -25,6 +29,7 @@ class Fantasma{
 	method lastPos() = lastPos
 	method iniciar(){ 
 		game.addVisual(self)
+		game.onCollideDo(self, { colisionado => if (colisionado.esUtilizable()) colisionado.interactuarCon(self) })
 	}
 	method setearPuntaje(){ puntos = 50 * (1 .. 4).anyOne() }
 	method aparecer(){

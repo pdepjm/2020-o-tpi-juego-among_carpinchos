@@ -26,7 +26,7 @@ object stalker inherits Actitud { //LO PEOR DE LOS PEOR, SE LA AGARRA CON UNO Y 
 	method image() = "stalker.png"
 	method victima() { stalkeado = personajesDisponibles.anyOne() }
 	method objetivoDe(unEnemigo) { 
-		if (!stalkeado.jugando()) 
+		if (!stalkeado.jugando() || !stalkeado.tieneVidas()) 
 			self.victima()
 		return stalkeado.position()
 			}

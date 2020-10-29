@@ -14,6 +14,7 @@ class Portal {
 		estado = "in"
 	}
 	method interactuarCon(unPersonaje){ self.teletransportarA(unPersonaje)}
+	method esUtilizable() = true
 	method esTraspasable() = true
 	method dibujar() { position.drawElement(self) }
 	method puedeSerComidoPor(unPerosnaje)= false

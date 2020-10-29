@@ -12,11 +12,15 @@ class Fruta{
 	method nombre()
 	method cooldown()
 	method puntos()
+	method jugando() = true
+	method tieneVidas() = true
 	method iniciar(){
 		game.addVisual(self)
 	}
 	method puedeSerComidoPor(unPersonaje) = true
 	method efectoPara(unPersonaje)
+	method encarcelar() { position = carcel }
+	method esUtilizable() = false
 	method esTraspasable() = true
 	method serComidoPor(unPersonaje){
 		game.sound("sounds/comer.mp3").play()
@@ -70,7 +74,10 @@ class Chilly inherits Fruta{
 		super()
 		unaFireball = new FireBall()
 		unaFireball.iniciar()
-		
+	}
+	override method encarcelar(){
+		super()
+		unaFireball.encarcelar()
 	}
 }
 
@@ -93,6 +100,8 @@ class FireBall {
 	}
 	method aparecer(){}
 	method puedeSerComidoPor(unPersonaje) = false
+	method encarcelar() { position = carcel }
+	method esUtilizable() = false
 	method esTraspasable() = true
 	method aparecerConPor(unPersonaje, unTiempo){
 		position = unPersonaje.position().down(2).left(2)

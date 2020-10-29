@@ -4,6 +4,7 @@ import juego.objetos.portal.Portal
 class Wall {
 	var position
 	method image() = "wall.png"
+	method esUtilizable() = false
 	method esTraspasable() = false
 	method position() = position
 	method dibujar() { position.drawElement(self) }
