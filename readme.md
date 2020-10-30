@@ -49,6 +49,7 @@
     - ☠️Al morir reaparecen con otro nombre, actitud y aporta diferente puntaje (**HECHO**)
 - 🍽️Alimentos (powerups y puntos):
     - Modeladas con clases (que heredan de otra clase principal (**HECHO -  MEJORABLE**)
+    - ![orb](assets/numbers/numero-50.png) Orbes: Aparecen cuando una fruta es comida, mostrando cuál fue el puntaje que otorgó
     - ❄️Cada fruta tiene su propio cooldown para reaparecer (**HECHO**)
     - Otorgan puntos y/o algún poder: (**HECHO - MEJORABLE**)
         - ![coin](assets/frutas/coin.png) Monedas: Sin efecto (**HECHO**)
