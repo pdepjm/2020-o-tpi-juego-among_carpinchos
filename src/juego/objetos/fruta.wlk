@@ -29,7 +29,7 @@ class Fruta inherits Consumible {
 	}
 
 	method serComidoPor(unPersonaje) {
-		game.sound("sounds/comer.mp3").play()
+		if (!unPersonaje.testMode()) game.sound("sounds/comer.mp3").play()
 		unPersonaje.sumarPuntos(puntos)
 		position = carcel
 		self.efectoPara(unPersonaje)

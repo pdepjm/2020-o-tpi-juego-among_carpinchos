@@ -7,6 +7,7 @@ import juego.objetos.fruta.*
 import juego.objetos.pacman.*
 import juego.objetos.portal.*
 import juego.mapa.*
+import juego.mrMsPacMan.*
 
 // pacman es comido y es mortal -> pierde una vida [serEliminado]
 // pacman es comido y no es mortal -> no pasa nada
@@ -16,7 +17,8 @@ import juego.mapa.*
 describe "Pacman" {
 
 	fixture {
-		game.clear()
+		mrPacman.iniciar()
+		mrPacman.testMode(true)
 	}
 
 	test "no es comido - no mortal" {
@@ -32,6 +34,7 @@ describe "Pacman" {
 
 	test "Comer fruta aumenta puntos" {
 		const banana = new Banana()
+		banana.iniciar()
 		banana.serComidoPor(mrPacman)
 		assert.equals(50, mrPacman.puntos())
 	}
@@ -45,9 +48,10 @@ describe "Pacman" {
 	test "Puede comer fantasmas" {
 		const cereza = new Cherry()
 		const fantasma = new Fantasma()
+		fantasma.iniciar()
 		cereza.serComidoPor(mrPacman)
 		fantasma.serComidoPor(mrPacman)
-		assert.equals(game.at(-1, -1), fantasma.position())
+		assert.equals(game.at(23, 8), fantasma.position())
 	}
 
 }
