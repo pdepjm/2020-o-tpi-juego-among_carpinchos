@@ -16,18 +16,14 @@ class Pacman inherits Consumible {
 	var gamepad
 	var vidas = 3
 	var mostradorDePuntos = null
-	var tUp = keyboard.w()
-	var tLeft = keyboard.a()
-	var tRight = keyboard.d()
-	var tDown = keyboard.s()
-
-	method nombre() = nombre
 
 	method image() = if (estaCerrado) self.imagenCerrado() else self.imagenEstado()
 
 	method imagenEstado() = "pacman/" + nombre + "/" + estado + "-" + self.sentido() + ".png"
 
 	method imagenCerrado() = "pacman/" + estado + "-closed.png"
+
+	method nombre() = nombre
 
 	method encarcelar() {
 		position = carcel
@@ -37,14 +33,13 @@ class Pacman inherits Consumible {
 
 	method tieneVidas() = vidas > 0
 
-	method configGamepad() {
+	method configGamepad(tUp, tDown, tLeft, tRight) {
 		gamepad = new GamePad(arriba = tUp, abajo = tDown, derecha = tRight, izquierda = tLeft)
 	}
 
 	method inicializar() {
 		carcel = game.at(23, 4)
 		position = carcel
-		self.configGamepad()
 		gamepad.iniciar(self)
 		game.addVisual(self)
 		game.onCollideDo(self, { colisionado => colisionado.interactuarCon(self)})
@@ -125,6 +120,7 @@ object mrPacman inherits Pacman {
 
 	method iniciar() {
 		nombre = "mrPacman"
+		self.configGamepad(keyboard.w(), keyboard.s(), keyboard.a(), keyboard.d())
 		self.inicializar()
 		self.setearTanterosEn(game.at(22, 18))
 	}
@@ -135,16 +131,9 @@ object msPacman inherits Pacman {
 
 	method iniciar() {
 		nombre = "msPacman"
-		self.setearTeclas()
+		self.configGamepad(keyboard.up(), keyboard.down(), keyboard.left(), keyboard.right())
 		self.inicializar()
 		self.setearTanterosEn(game.at(22, 16))
-	}
-
-	method setearTeclas() {
-		tUp = keyboard.up()
-		tDown = keyboard.down()
-		tLeft = keyboard.left()
-		tRight = keyboard.right()
 	}
 
 }

@@ -9,7 +9,7 @@ const nombres = [ "lime", "red", "cyan", "pink", "yellow" ]
 class Fantasma inherits Consumible {
 
 	var actitud = listaActitudes.anyOne()
-	var lastPos = game.origin()
+	var lastPos = position
 	const posicionador = posicionadorFantasma
 
 	override method position(unaPos) {
@@ -17,7 +17,7 @@ class Fantasma inherits Consumible {
 		position = unaPos
 	}
 
-	method image() = "enemigo/" + nombre + "/" + actitud.image()
+	method image() = "enemigo/" + nombre + "/" + actitud.nombre() + ".png"
 
 	method encarcelar() {
 		position = carcel

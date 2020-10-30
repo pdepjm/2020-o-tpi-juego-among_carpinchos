@@ -4,7 +4,7 @@ import juego.objetos.pacman.personajes
 
 object timida { //BUSCA SIEMPRE AL JUGADOR MAS LEJANO, INDIRECTAMENTE DEJANDOLO "EN EL MEDIO" (TIMIDEZ)
 
-	method image() = "shy.png"
+	method nombre() = "shy"
 
 	method objetivoDe(unEnemigo) = personajes.max({ unPersonaje => unEnemigo.position().distance(unPersonaje.position()) }).position()
 
@@ -12,7 +12,7 @@ object timida { //BUSCA SIEMPRE AL JUGADOR MAS LEJANO, INDIRECTAMENTE DEJANDOLO 
 
 object cazadora { //BUSCA SIEMPRE AL JUGADOR QUE TENGA MAS CERCA 
 
-	method image() = "hunter.png"
+	method nombre() = "hunter"
 
 	method objetivoDe(unEnemigo) = personajes.min({ unPersonaje => unEnemigo.position().distance(unPersonaje.position()) }).position()
 
@@ -20,7 +20,7 @@ object cazadora { //BUSCA SIEMPRE AL JUGADOR QUE TENGA MAS CERCA
 
 object tontita { //BUSCA A CUALQUIER PERSONAJE, PORQUE NO LE DA LA CABEZA
 
-	method image() = "dumb.png"
+	method nombre() = "dumb"
 
 	method objetivoDe(unEnemigo) = personajes.anyOne().position()
 
@@ -30,7 +30,7 @@ object stalker { //LO PEOR DE LOS PEOR, SE LA AGARRA CON UNO Y SIEMPRE LO VA A B
 
 	var stalkeado = self.unaVictima()
 
-	method image() = "stalker.png"
+	method nombre() = "stalker"
 
 	method unaVictima() = personajes.anyOne()
 
@@ -43,7 +43,7 @@ object stalker { //LO PEOR DE LOS PEOR, SE LA AGARRA CON UNO Y SIEMPRE LO VA A B
 
 object exploradora { //VA RECORRIENDO EL MAPA, DIRIGIENDOSE SIEMPRE A DISTINTAS POSICIONES, SIN INTENCIÓN DE MOLESTAR A NADIE
 
-	method image() = "explorador.png"
+	method nombre() = "explorador"
 
 	method objetivoDe(unEnemigo) = grillaDeJuego.grilla().anyOne()
 
