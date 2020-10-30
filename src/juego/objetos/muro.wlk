@@ -1,21 +1,18 @@
 import wollok.game.*
+import juego.objetos.posicionables.Estructura
 
-class Wall {
+class Wall inherits Estructura {
 
-	var position
-
-	method image() = "wall.png"
+	method image() = nombre
 
 	method esUtilizable() = false
 
 	method esTraspasable() = false
 
-	method position() = position
-
-	method dibujar() {
-		position.drawElement(self)
+	override method dibujar() {
+		super()
+		nombre = "wall.png"
 	}
 
-	method puedeSerComidoPor(unPersonaje) = false
-
 }
+

@@ -1,13 +1,12 @@
 import wollok.game.*
 import juego.gamePad.GamePad
+import juego.objetos.posicionables.Consumible
 import juego.posicionadores.posicionadorPacman
 import juego.barraLateral.*
 
-class Pacman {
+class Pacman inherits Consumible {
 
 	const posicionador = posicionadorPacman
-	const carcel = game.at(23, 4)
-	var property position = carcel
 	var property sentido = "up"
 	var property jugando = true
 	var estado = "normal"
@@ -15,12 +14,17 @@ class Pacman {
 	var mortal = false
 	var gamepad
 	var vidas = 3
-	var puntos = 0
 	var mostradorDePuntos = null
+	var tUp = keyboard.w()
+	var tLeft = keyboard.a()
+	var tRight = keyboard.d()
+	var tDown = keyboard.s()
+
+	method nombre() = nombre
 
 	method image() = if (estaCerrado) self.imagenCerrado() else self.imagenEstado()
 
-	method imagenEstado() = "pacman/" + self.nombre() + "/" + estado + "-" + self.sentido() + ".png"
+	method imagenEstado() = "pacman/" + nombre + "/" + estado + "-" + self.sentido() + ".png"
 
 	method imagenCerrado() = "pacman/" + estado + "-closed.png"
 
@@ -30,23 +34,24 @@ class Pacman {
 		puntos = 0
 	}
 
-	method esUtilizable() = false
-
-	method esTraspasable() = true
-
 	method tieneVidas() = vidas > 0
 
-	method puntos() = puntos
+	method configGamepad() {
+		gamepad = new GamePad(arriba = tUp, abajo = tDown, derecha = tRight, izquierda = tLeft)
+	}
 
-	method nombre()
-
-	method configGamepad()
-
-	method iniciar() {
+	method inicializar() {
+		carcel = game.at(23, 4)
+		position = carcel
 		self.configGamepad()
 		gamepad.iniciar(self)
 		game.addVisual(self)
 		game.onCollideDo(self, { colisionado => colisionado.interactuarCon(self)})
+	}
+
+	method setearTanterosEn(unaPosicion) {
+		mostradorDePuntos = new MostradorPuntos()
+		mostradorDePuntos.iniciarParaEn(self, unaPosicion)
 	}
 
 	method interactuarCon(unPersonaje) {
@@ -117,38 +122,31 @@ class Pacman {
 
 object mrPacman inherits Pacman {
 
-	// esta en override para agregar el mostrador de puntos y vidas en una posicion especial
-	override method iniciar() {
-		super()
-		mostradorDePuntos = new Puntos(position = game.at(22, 18), nombre = self.nombre())
-		const mostradorDeVidas = new Corazones(position = game.at(23, 18), jugador = self)
-		game.addVisual(mostradorDePuntos)
-		game.addVisual(mostradorDeVidas)
-	}
-
-	override method nombre() = "mrPacman"
-
-	override method configGamepad() {
-		gamepad = new GamePad(arriba = keyboard.w(), abajo = keyboard.s(), derecha = keyboard.d(), izquierda = keyboard.a())
+	method iniciar() {
+		nombre = "mrPacman"
+		self.inicializar()
+		self.setearTanterosEn(game.at(22, 18))
 	}
 
 }
 
 object msPacman inherits Pacman {
 
-	override method iniciar() {
-		super()
-		mostradorDePuntos = new Puntos(position = game.at(22, 16), nombre = self.nombre())
-		const mostradorDeVidas = new Corazones(position = game.at(23, 16), jugador = self)
-		game.addVisual(mostradorDePuntos)
-		game.addVisual(mostradorDeVidas)
+	method iniciar() {
+		nombre = "msPacman"
+		self.setearTeclas()
+		self.inicializar()
+		self.setearTanterosEn(game.at(22, 16))
 	}
 
-	override method nombre() = "msPacman"
-
-	override method configGamepad() {
-		gamepad = new GamePad(arriba = keyboard.up(), abajo = keyboard.down(), derecha = keyboard.right(), izquierda = keyboard.left())
+	method setearTeclas() {
+		tUp = keyboard.up()
+		tDown = keyboard.down()
+		tLeft = keyboard.left()
+		tRight = keyboard.right()
 	}
 
 }
+
+const personajes = [ mrPacman, msPacman ]
 

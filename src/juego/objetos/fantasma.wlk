@@ -1,20 +1,20 @@
 import wollok.game.*
-import juego.actitudes.*
+import juego.objetos.posicionables.Consumible
+import juego.actitudes.listaActitudes
 import juego.posicionadores.posicionadorFantasma
-
-const actitudes = [ timida, cazadora, tontita, stalker, exploradora ]
 
 const nombres = [ "lime", "red", "cyan", "pink", "yellow" ]
 
-class Fantasma {
+class Fantasma inherits Consumible {
 
-	const carcel = game.at(23, 8)
-	var nombre = nombres.anyOne()
-	var puntos = 0
-	var actitud = actitudes.anyOne()
-	var position = carcel
-	var lastPos = position
+	var actitud = listaActitudes.anyOne()
+	var lastPos = game.origin()
 	const posicionador = posicionadorFantasma
+
+	override method position(unaPos) {
+		lastPos = position
+		position = unaPos
+	}
 
 	method image() = "enemigo/" + nombre + "/" + actitud.image()
 
@@ -22,26 +22,18 @@ class Fantasma {
 		position = carcel
 	}
 
-	method esUtilizable() = false
-
-	method esTraspasable() = true
-
 	method jugando() = true
 
 	method tieneVidas() = true
 
-	method puntos() = puntos
-
-	method position() = position
-
-	method position(unaPos) {
-		lastPos = position
-		position = unaPos
-	}
-
 	method lastPos() = lastPos
 
 	method iniciar() {
+		carcel = game.at(23, 8)
+		position = carcel
+		lastPos = position
+		nombre = nombres.anyOne()
+		self.setearPuntaje()
 		game.addVisual(self)
 		game.onCollideDo(self, { colisionado =>
 			if (colisionado.esUtilizable()) colisionado.interactuarCon(self)
@@ -66,7 +58,7 @@ class Fantasma {
 		unPersonaje.sumarPuntos(puntos)
 		position = carcel
 		nombre = nombres.anyOne()
-		actitud = actitudes.anyOne()
+		actitud = listaActitudes.anyOne()
 		game.schedule(5000, { self.aparecer()})
 	}
 

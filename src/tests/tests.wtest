@@ -6,7 +6,7 @@ import juego.objetos.fantasma.*
 import juego.objetos.fruta.*
 import juego.objetos.pacman.*
 import juego.objetos.portal.*
-import juego.estructura.*
+import juego.mapa.*
 
 // pacman es comido y es mortal -> pierde una vida [serEliminado]
 // pacman es comido y no es mortal -> no pasa nada

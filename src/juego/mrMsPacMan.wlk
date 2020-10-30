@@ -2,26 +2,17 @@ import wollok.game.*
 import juego.menu.menu
 import juego.grilla.*
 import juego.posicionadores.*
-import juego.actitudes.*
 import juego.objetos.fantasma.*
 import juego.objetos.fruta.*
 import juego.objetos.pacman.*
-import juego.estructura.*
+import juego.mapa.*
 
 object mrMsPacMan {
 
-	const personajes = [ mrPacman, msPacman ]
 	const enemigos = []
 	const posicionables = []
 
 	method posicionables() = posicionables
-
-	method iniciarActitudes() {
-		timida.setearDisponibles(personajes)
-		cazadora.setearDisponibles(personajes)
-		tontita.setearDisponibles(personajes)
-		stalker.setearDisponibles(personajes)
-	}
 
 	method setearMovimientosPara(unaListaDePersonajes, unaFrecuencia) {
 		game.onTick(unaFrecuencia, "Movimientos", { if (unaListaDePersonajes.all({ unPersonaje => !unPersonaje.jugando() || !unPersonaje.tieneVidas() })) self.reiniciar() else unaListaDePersonajes.forEach({ unPersonaje => unPersonaje.mover() })
@@ -29,31 +20,31 @@ object mrMsPacMan {
 	}
 
 	method agregarEnemigos(unaCantidad) {
-		(1 .. unaCantidad).forEach({ n => enemigos.add(new Fantasma())})
+		(1 .. unaCantidad).forEach{ n => enemigos.add(new Fantasma())}
 	}
 
 	method agregarMonedas(unaCantidad) {
-		(1 .. unaCantidad).forEach({ n => posicionables.add(new Coin())})
+		(1 .. unaCantidad).forEach{ n => posicionables.add(new Coin())}
 	}
 
 	method agregarBananas(unaCantidad) {
-		(1 .. unaCantidad).forEach({ n => posicionables.add(new Banana())})
+		(1 .. unaCantidad).forEach{ n => posicionables.add(new Banana())}
 	}
 
 	method agregarCherrys(unaCantidad) {
-		(1 .. unaCantidad).forEach({ n => posicionables.add(new Cherry())})
+		(1 .. unaCantidad).forEach{ n => posicionables.add(new Cherry())}
 	}
 
 	method agregarPizzas(unaCantidad) {
-		(1 .. unaCantidad).forEach({ n => posicionables.add(new Pizza())})
+		(1 .. unaCantidad).forEach{ n => posicionables.add(new Pizza())}
 	}
 
 	method agregarCorazones(unaCantidad) {
-		(1 .. unaCantidad).forEach({ n => posicionables.add(new Heart())})
+		(1 .. unaCantidad).forEach{ n => posicionables.add(new Heart())}
 	}
 
 	method agregarChillys(unaCantidad) {
-		(1 .. unaCantidad).forEach({ n => posicionables.add(new Chilly())})
+		(1 .. unaCantidad).forEach{ n => posicionables.add(new Chilly())}
 	}
 
 	method agregarFrutas() {
@@ -78,7 +69,6 @@ object mrMsPacMan {
 	method iniciar() {
 		generadorDeMuros.generar()
 		grillaDeJuego.generarGrillaDe(21, 21)
-		self.iniciarActitudes()
 		self.inicializarPosicionables()
 		menu.mostrar()
 		game.start()
@@ -90,6 +80,7 @@ object mrMsPacMan {
 
 	method reiniciar() {
 		posicionables.forEach({ unPosicionable => unPosicionable.encarcelar()})
+		msPacman.jugando(false)
 		menu.reiniciar()
 	}
 

@@ -1,22 +1,34 @@
 import wollok.game.*
+import juego.objetos.posicionables.Estructura
 
-class Portal {
-	var property position 
+class Portal inherits Estructura {
+
 	var property salida = self
-	var estado = "closed"
-	
-	method estado(unEstado){ estado = unEstado }
-	method image() = "portales/" + estado + ".png"
-	method anexarCon(otroPortal){
-		otroPortal.salida(self)
-		otroPortal.estado("out")
-		self.salida(otroPortal)
-		estado = "in"
-	}
-	method interactuarCon(unPersonaje){ self.teletransportarA(unPersonaje)}
-	method esUtilizable() = true
+
 	method esTraspasable() = true
-	method dibujar() { position.drawElement(self) }
-	method puedeSerComidoPor(unPerosnaje)= false
-	method teletransportarA(unPersonaje){ unPersonaje.position(salida.position()) }
+
+	method esUtilizable() = true
+
+	method nombre(unNombre) {
+		nombre = unNombre
+	}
+
+	method image() = "portales/" + nombre + ".png"
+
+	method anexarCon(otroPortal) {
+		otroPortal.salida(self)
+		otroPortal.nombre("out")
+		self.salida(otroPortal)
+		nombre = "in"
+	}
+
+	method interactuarCon(unPersonaje) {
+		self.teletransportarA(unPersonaje)
+	}
+
+	method teletransportarA(unPersonaje) {
+		unPersonaje.position(salida.position())
+	}
+
 }
+

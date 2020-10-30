@@ -1,48 +1,39 @@
 import wollok.game.*
-import juego.posicionadores.Posicionador
+import juego.posicionadores.posicionadorFruta
+import juego.objetos.posicionables.Consumible
 
-const posicionadorFruta = new Posicionador()
+class Fruta inherits Consumible {
 
-class Fruta {
-
-	const carcel = game.at(23, 13)
 	const posicionador = posicionadorFruta
-	var property position = carcel
+	var cooldown = 0
 
-	method image() = "frutas/" + self.nombre() + ".png"
-
-	method nombre()
-
-	method cooldown()
-
-	method puntos()
+	method image() = "frutas/" + nombre + ".png"
 
 	method jugando() = true
 
 	method tieneVidas() = true
 
-	method iniciar() {
-		game.addVisual(self)
-	}
-
 	method puedeSerComidoPor(unPersonaje) = true
 
-	method efectoPara(unPersonaje)
+	method efectoPara(unPersonaje) {
+	}
+
+	method inicializar() {
+		carcel = game.at(23, 13)
+		position = carcel
+		game.addVisual(self)
+	}
 
 	method encarcelar() {
 		position = carcel
 	}
 
-	method esUtilizable() = false
-
-	method esTraspasable() = true
-
 	method serComidoPor(unPersonaje) {
 		game.sound("sounds/comer.mp3").play()
-		unPersonaje.sumarPuntos(self.puntos())
+		unPersonaje.sumarPuntos(puntos)
 		position = carcel
 		self.efectoPara(unPersonaje)
-		game.schedule(self.cooldown(), { self.aparecer()})
+		game.schedule(cooldown, { self.aparecer()})
 	}
 
 	method interactuarCon(unPersonaje) {
@@ -57,24 +48,23 @@ class Fruta {
 
 class Coin inherits Fruta {
 
-	override method cooldown() = 5000
-
-	override method puntos() = 25
-
-	override method nombre() = "coin"
-
-	override method efectoPara(unPersonaje) {
+	method iniciar() {
+		nombre = "coin"
+		cooldown = 5000
+		puntos = 25
+		self.inicializar()
 	}
 
 }
 
 class Banana inherits Fruta {
 
-	override method cooldown() = 25000
-
-	override method puntos() = 50
-
-	override method nombre() = "banana"
+	method iniciar() {
+		nombre = "banana"
+		cooldown = 25000
+		puntos = 50
+		self.inicializar()
+	}
 
 	override method efectoPara(unPersonaje) {
 		unPersonaje.enfurecerPor(10000)
@@ -84,11 +74,12 @@ class Banana inherits Fruta {
 
 class Cherry inherits Fruta {
 
-	override method cooldown() = 15000
-
-	override method puntos() = 100
-
-	override method nombre() = "cherry"
+	method iniciar() {
+		nombre = "cherry"
+		cooldown = 15000
+		puntos = 100
+		self.inicializar()
+	}
 
 	override method efectoPara(unPersonaje) {
 		unPersonaje.enfurecerPor(5000)
@@ -98,11 +89,12 @@ class Cherry inherits Fruta {
 
 class Heart inherits Fruta {
 
-	override method cooldown() = 50000
-
-	override method puntos() = 100
-
-	override method nombre() = "heart"
+	method iniciar() {
+		nombre = "heart"
+		cooldown = 50000
+		puntos = 100
+		self.inicializar()
+	}
 
 	override method efectoPara(unPersonaje) {
 		unPersonaje.ganarVida()
@@ -112,11 +104,12 @@ class Heart inherits Fruta {
 
 class Pizza inherits Fruta {
 
-	override method cooldown() = 75000
-
-	override method puntos() = 200
-
-	override method nombre() = "pizza"
+	method iniciar() {
+		nombre = "pizza"
+		cooldown = 75000
+		puntos = 200
+		self.inicializar()
+	}
 
 	override method efectoPara(unPersonaje) {
 		unPersonaje.ganarVida()
@@ -129,20 +122,18 @@ class Chilly inherits Fruta {
 
 	var unaFireball = null
 
-	override method cooldown() = 100000
-
-	override method puntos() = 500
-
-	override method nombre() = "chilly"
+	method iniciar() {
+		nombre = "chilly"
+		cooldown = 100000
+		puntos = 500
+		position = carcel
+		unaFireball = new FireBall()
+		unaFireball.iniciar()
+		game.addVisual(self)
+	}
 
 	override method efectoPara(unJugador) {
 		unaFireball.aparecerConPor(unJugador, 400)
-	}
-
-	override method iniciar() {
-		super()
-		unaFireball = new FireBall()
-		unaFireball.iniciar()
 	}
 
 	override method encarcelar() {
@@ -152,14 +143,13 @@ class Chilly inherits Fruta {
 
 }
 
-class FireBall {
-
-	const carcel = game.at(21, 0)
-	var property position = carcel
+class FireBall inherits Consumible {
 
 	method image() = "fireball.png"
 
 	method iniciar() {
+		carcel = game.at(21, 0)
+		position = carcel
 		game.addVisual(self)
 	}
 
@@ -181,10 +171,6 @@ class FireBall {
 	method encarcelar() {
 		position = carcel
 	}
-
-	method esUtilizable() = false
-
-	method esTraspasable() = true
 
 	method aparecerConPor(unPersonaje, unTiempo) {
 		position = unPersonaje.position().down(2).left(2)
