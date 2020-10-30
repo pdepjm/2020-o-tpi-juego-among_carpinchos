@@ -2,6 +2,7 @@ import wollok.game.*
 import juego.objetos.posicionables.Consumible
 import juego.actitudes.listaActitudes
 import juego.posicionadores.posicionadorFantasma
+import juego.objetos.orbesPuntos.Orbe
 
 const nombres = [ "lime", "red", "cyan", "pink", "yellow" ]
 
@@ -56,6 +57,7 @@ class Fantasma inherits Consumible {
 	method serComidoPor(unPersonaje) {
 		if (!unPersonaje.testMode()) game.sound("sounds/comer.mp3").play()
 		unPersonaje.sumarPuntos(puntos)
+		new Orbe(puntos = puntos, position = position).mostrarse()
 		position = carcel
 		nombre = nombres.anyOne()
 		actitud = listaActitudes.anyOne()

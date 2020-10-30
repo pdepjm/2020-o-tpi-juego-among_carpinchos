@@ -1,6 +1,8 @@
 import wollok.game.*
 import juego.posicionadores.posicionadorFruta
 import juego.objetos.posicionables.Consumible
+import juego.objetos.fireBall.FireBall
+import juego.objetos.orbesPuntos.Orbe
 
 class Fruta inherits Consumible {
 
@@ -31,6 +33,7 @@ class Fruta inherits Consumible {
 	method serComidoPor(unPersonaje) {
 		if (!unPersonaje.testMode()) game.sound("sounds/comer.mp3").play()
 		unPersonaje.sumarPuntos(puntos)
+		new Orbe(puntos = puntos, position = position).mostrarse()
 		position = carcel
 		self.efectoPara(unPersonaje)
 		game.schedule(cooldown, { self.aparecer()})
@@ -120,63 +123,16 @@ class Pizza inherits Fruta {
 
 class Chilly inherits Fruta {
 
-	var unaFireball = null
-
 	method iniciar() {
 		nombre = "chilly"
 		cooldown = 100000
 		puntos = 500
 		position = carcel
-		unaFireball = new FireBall()
-		unaFireball.iniciar()
 		game.addVisual(self)
 	}
 
 	override method efectoPara(unJugador) {
-		unaFireball.aparecerConPor(unJugador, 400)
-	}
-
-	override method encarcelar() {
-		super()
-		unaFireball.encarcelar()
-	}
-
-}
-
-class FireBall inherits Consumible {
-
-	method image() = "fireball.png"
-
-	method iniciar() {
-		carcel = game.at(21, 0)
-		position = carcel
-		game.addVisual(self)
-	}
-
-	method comestiblesEnAreaDe(unPersonaje) {
-		const comestibles = []
-		(0 .. 4).forEach{ x => (0 .. 4).forEach{ y =>
-			const objetos = game.getObjectsIn(position.right(x).up(y))
-			objetos.removeAllSuchThat({ elemento => !elemento.puedeSerComidoPor(unPersonaje)})
-			comestibles.addAll(objetos)
-		}}
-		return comestibles
-	}
-
-	method aparecer() {
-	}
-
-	method puedeSerComidoPor(unPersonaje) = false
-
-	method encarcelar() {
-		position = carcel
-	}
-
-	method aparecerConPor(unPersonaje, unTiempo) {
-		position = unPersonaje.position().down(2).left(2)
-		unPersonaje.enfurecerPor(unTiempo)
-		self.comestiblesEnAreaDe(unPersonaje).forEach({ unComestible => unComestible.serComidoPor(unPersonaje)})
-		game.schedule(unTiempo, { position = carcel})
+		new FireBall(nombre = "fireball").aparecerConPor(unJugador, 400)
 	}
 
 }
