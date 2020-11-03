@@ -1,4 +1,5 @@
 import wollok.game.*
+import juego.sonidos.*
 import juego.objetos.posicionables.Consumible
 import juego.actitudes.listaActitudes
 import juego.posicionadores.posicionadorFantasma
@@ -55,7 +56,7 @@ class Fantasma inherits Consumible {
 	method puedeSerComidoPor(unPersonaje) = unPersonaje.estado().equals("furioso")
 
 	method serComidoPor(unPersonaje) {
-		if (!unPersonaje.testMode()) game.sound("sounds/comer.mp3").play()
+		sonidos.reproducir("comer.mp3")
 		unPersonaje.sumarPuntos(puntos)
 		new Orbe(puntos = puntos, position = position).mostrarse()
 		position = carcel

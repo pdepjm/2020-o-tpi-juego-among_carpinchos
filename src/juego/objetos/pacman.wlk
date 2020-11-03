@@ -1,4 +1,5 @@
 import wollok.game.*
+import juego.sonidos.*
 import juego.gamePad.GamePad
 import juego.objetos.posicionables.Consumible
 import juego.posicionadores.posicionadorPacman
@@ -9,7 +10,6 @@ class Pacman inherits Consumible {
 	const posicionador = posicionadorPacman
 	var property sentido = "up"
 	var property jugando = true
-	var property testMode = false
 	var estado = "normal"
 	var estaCerrado = false
 	var mortal = false
@@ -85,7 +85,7 @@ class Pacman inherits Consumible {
 
 	method serEliminado() {
 		if (mortal) {
-			if (!testMode) game.sound("sounds/gameOver.wav").play()
+			sonidos.reproducir("gameOver.wav")
 			vidas = (vidas - 1).max(0)
 			if (vidas.equals(0)) {
 				position = carcel

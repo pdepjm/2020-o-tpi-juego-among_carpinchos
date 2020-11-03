@@ -1,4 +1,5 @@
 import wollok.game.*
+import juego.sonidos.*
 import juego.posicionadores.posicionadorFruta
 import juego.objetos.posicionables.Consumible
 import juego.objetos.fireBall.FireBall
@@ -31,7 +32,7 @@ class Fruta inherits Consumible {
 	}
 
 	method serComidoPor(unPersonaje) {
-		if (!unPersonaje.testMode()) game.sound("sounds/comer.mp3").play()
+		sonidos.reproducir("comer.mp3")
 		unPersonaje.sumarPuntos(puntos)
 		new Orbe(puntos = puntos, position = position).mostrarse()
 		position = carcel

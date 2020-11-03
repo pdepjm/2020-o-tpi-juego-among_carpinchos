@@ -1,4 +1,5 @@
 import wollok.game.*
+import juego.sonidos.*
 import juego.objetos.posicionables.Estructura
 
 class Portal inherits Estructura {
@@ -23,6 +24,7 @@ class Portal inherits Estructura {
 	}
 
 	method interactuarCon(unPersonaje) {
+		sonidos.reproducir("teleport.wav")
 		self.teletransportarA(unPersonaje)
 	}
 

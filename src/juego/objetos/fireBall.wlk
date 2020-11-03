@@ -1,4 +1,5 @@
 import wollok.game.*
+import juego.sonidos.*
 import juego.objetos.posicionables.Consumible
 
 class FireBall inherits Consumible {
@@ -25,6 +26,7 @@ class FireBall inherits Consumible {
 		position = unPersonaje.position().down(2).left(2)
 		unPersonaje.enfurecerPor(unTiempo)
 		self.comestiblesEnAreaDe(unPersonaje).forEach({ unComestible => unComestible.serComidoPor(unPersonaje)})
+		sonidos.reproducir("explosion.mp3")
 		game.schedule(unTiempo, { game.removeVisual(self)})
 	}
 

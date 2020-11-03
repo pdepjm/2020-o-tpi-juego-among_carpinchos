@@ -1,5 +1,6 @@
 import wollok.game.*
 import juego.grilla.*
+import juego.sonidos.*
 import juego.posicionadores.*
 import juego.actitudes.*
 import juego.objetos.fantasma.*
@@ -9,16 +10,24 @@ import juego.objetos.portal.*
 import juego.mapa.*
 import juego.mrMsPacMan.*
 
-// pacman es comido y es mortal -> pierde una vida [serEliminado]
-// pacman es comido y no es mortal -> no pasa nada
-// pacman come fruta -> aumentan los puntos
-// pacman come fruta (aumentan corazones) -> corazones + 1
-// pacman come fruta (letalidad) y come fantasma -> aumentan los puntos
+object mockSonido {
+
+	method play() {
+	}
+
+}
+
+object mockGame {
+
+	method sound(ruta) = mockSonido
+
+}
+
 describe "Pacman" {
 
 	fixture {
+		sonidos.elGame(mockGame)
 		mrPacman.iniciar()
-		mrPacman.testMode(true)
 	}
 
 	test "no es comido - no mortal" {
