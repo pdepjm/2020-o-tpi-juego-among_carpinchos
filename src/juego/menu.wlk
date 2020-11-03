@@ -1,5 +1,6 @@
 import wollok.game.*
 import juego.objetos.pacman.*
+import juego.sonidos.*
 import juego.mrMsPacMan.mrMsPacMan
 
 object menu {
@@ -14,20 +15,24 @@ object menu {
 
 	method mostrar() {
 		game.addVisual(self)
-		keyboard.del().onPressDo({ if (!enJuego) game.stop() else mrMsPacMan.reiniciar()
+		keyboard.del().onPressDo({ sonidos.reproducir("click.wav")
+			if (!enJuego) game.stop() else mrMsPacMan.reiniciar()
 		})
 		keyboard.num1().onPressDo({ if (!enJuego) {
+				sonidos.reproducir("click.wav")
 				imagen = 1
 				msPacman.jugando(false)
 			}
 		})
 		keyboard.num2().onPressDo({ if (!enJuego) {
+				sonidos.reproducir("click.wav")
 				imagen = 2
 				msPacman.jugando(true)
 			}
 		})
 		keyboard.enter().onPressDo({ if (!enJuego) {
 				enJuego = true
+				sonidos.reproducir("inicio.mp3")
 				if (imagen.equals(1)) {
 					imagen = 4
 				} else imagen = 3
