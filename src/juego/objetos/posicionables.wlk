@@ -21,7 +21,7 @@ class Estructura inherits Posicionable {
 class Consumible inherits Posicionable {
 
 	var puntos = 0
-	var carcel = game.origin()
+	var carcel = position
 
 	method esUtilizable() = false
 

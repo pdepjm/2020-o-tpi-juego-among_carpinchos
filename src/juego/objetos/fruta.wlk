@@ -128,8 +128,7 @@ class Chilly inherits Fruta {
 		nombre = "chilly"
 		cooldown = 100000
 		puntos = 500
-		position = carcel
-		game.addVisual(self)
+		self.inicializar()
 	}
 
 	override method efectoPara(unJugador) {

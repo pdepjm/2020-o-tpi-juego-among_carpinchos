@@ -12,6 +12,7 @@ object menu {
 	method image() = "menu/" + imagen.toString() + "PlayerMenu.png"
 
 	method puedeSerComidoPor(unPersonaje) = false
+	method esTraspasable() = false
 
 	method mostrar() {
 		game.addVisual(self)
