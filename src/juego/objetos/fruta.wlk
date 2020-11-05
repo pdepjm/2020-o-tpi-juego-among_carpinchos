@@ -27,9 +27,7 @@ class Fruta inherits Consumible {
 		game.addVisual(self)
 	}
 
-	method encarcelar() {
-		position = carcel
-	}
+	method encarcelar() { position = carcel }
 
 	method serComidoPor(unPersonaje) {
 		sonidos.reproducir("comer.mp3")

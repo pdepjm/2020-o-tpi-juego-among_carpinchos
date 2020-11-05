@@ -10,9 +10,7 @@ class Posicionable {
 
 class Estructura inherits Posicionable {
 
-	method dibujar() {
-		position.drawElement(self)
-	}
+	method dibujar() { position.drawElement(self) }
 
 	method puedeSerComidoPor(unPersonaje) = false
 

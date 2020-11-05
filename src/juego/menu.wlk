@@ -36,7 +36,8 @@ object menu {
 				sonidos.reproducir("inicio.mp3")
 				if (imagen.equals(1)) {
 					imagen = 4
-				} else imagen = 3
+				} 
+				else imagen = 3
 				mrMsPacMan.jugar()
 			}
 		})
